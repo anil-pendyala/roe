@@ -7,6 +7,10 @@ class AudioRequest(BaseModel):
     audio_id: str
     audio_base64: str
 
+@app.get("/")
+def root():
+    return {"message": "API is working 🚀"}
+
 @app.post("/")
 async def analyze(req: AudioRequest):
     return {
@@ -25,5 +29,5 @@ async def analyze(req: AudioRequest):
         "correlation": []
     }
 
-# 👇 THIS is required for Vercel
+# 👇 REQUIRED
 handler = app
